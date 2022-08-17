@@ -1,10 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App'
+import Header from './components/Header';
+import RegistryPage from './components/RegistryPage';
+import LoginPage from './components/LoginPage';
+
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="registry" element={<RegistryPage />} />
+        <Route path="login" element={<LoginPage />} />
+      </Routes>
+  </BrowserRouter>
 )
