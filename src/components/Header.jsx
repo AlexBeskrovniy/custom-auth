@@ -26,15 +26,25 @@ const Header = () => {
                 <li>
                     <Link to="/">Main</Link>
                 </li>
-                <li>
-                    <Link to="/login">Sign In</Link>
-                </li>
-                <li>
-                    <Link to="/registry">Sign up</Link>
-                </li>
-                <li>
-                    <button onClick={testAuth}>Show me my email!</button>
-                </li>
+                {jwt ? (
+                    <>
+                        <li>
+                            <button onClick={testAuth}>Show me my email!</button>
+                        </li>
+                        <li>
+                            <Link to="/private">Private page</Link>
+                        </li>
+                    </>
+                ) : ( 
+                <>
+                    <li>
+                        <Link to="/login">Sign In</Link>
+                    </li>
+                    <li>
+                        <Link to="/registry">Sign up</Link>
+                    </li>
+                </>
+                ) }
             </ul>
         </header>
     );
