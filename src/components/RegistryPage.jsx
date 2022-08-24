@@ -1,12 +1,18 @@
 import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../providers/AuthProvider';
 
 const RegistryPage = () => {
+    const navigate = useNavigate();
+
+    const { onLogIn } = useAuthContext();
+
     const nameRef = useRef();
     const loginRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
 
-    const handleSubmit = async (e) => {
+    const handleRegistry = async (e) => {
         e.preventDefault();
         const formData = {
             name: nameRef.current.value,
@@ -24,14 +30,18 @@ const RegistryPage = () => {
                 body: JSON.stringify(formData)
             });
             const data = await res.json();
-            console.log(data, res.status);
+            if (res.ok) {
+                console.log(data);
+                onLogIn(data);
+                navigate('/');
+            }
         } catch(err) {
             console.error(err);
         }
     }
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleRegistry}>
             <input type="text" placeholder="Name" ref={nameRef} required/>
             <input type="text" placeholder="Login" ref={loginRef} required/>
             <input type="email" placeholder="Email" ref={emailRef} required/>
