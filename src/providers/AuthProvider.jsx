@@ -47,10 +47,6 @@ const AuthProvider = ({ children }) => {
         console.log("you're logged out");
     }
 
-    // useEffect(() => {
-    //     checkAuth();
-    // }, []);
-
     return (
         <AuthContext.Provider value={{ token, user, onLogOut, onLogIn }}>
             { children }

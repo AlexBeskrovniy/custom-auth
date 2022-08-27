@@ -30,7 +30,7 @@ const LoginPage = () => {
             if (res.ok) {
                 console.log(data);
                 onLogIn(data);
-                navigate('/');
+                navigate('/dashboard');
             }
         } catch(err) {
             console.error(err);

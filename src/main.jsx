@@ -9,6 +9,7 @@ import PrivatePage from './components/PrivatePage';
 import PageNotFound from './components/PageNotFound';
 import AuthProvider from './providers/AuthProvider';
 import ProtectedRoute from './providers/ProtectedRoute';
+import Dashboard from './components/Dashboard';
 
 import './index.css'
 
@@ -23,6 +24,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="private" element={
             <ProtectedRoute>
               <PrivatePage />
+            </ProtectedRoute>
+          } />
+          <Route path="dashboard" element={
+            <ProtectedRoute>
+              <Dashboard />
             </ProtectedRoute>
           } />
           <Route path="*" element={<PageNotFound />}/>

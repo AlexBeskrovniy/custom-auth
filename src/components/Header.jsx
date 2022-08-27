@@ -28,7 +28,7 @@ const Header = () => {
                 {user && (
                     <>
                         <li>
-                            <Link to="/dashboard">Welcome, {user.name}</Link>
+                            <Link to="/dashboard">Dashboard</Link>
                         </li>
                         <li>
                             <button onClick={onLogOut}>Logout</button>
